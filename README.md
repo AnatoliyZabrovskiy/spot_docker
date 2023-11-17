@@ -53,10 +53,6 @@ The default version of SPOT framework is in the container folder **_/root/good-r
 <!-- GETTING STARTED -->
 ## Getting Started: How We Run SPOT framework on Our Infrastructure with the UR5e Robot
 
-<p align="center">
-  <img src="./readme_files/robot_1.jpg" width="445" height="325" alt="Docker image OS" />
-</p>
-
 ### 1. Lab Server
 
 Our ASUS Xtion Pro Live RGB-D camera is connected via USB to the Lab server (Ubuntu 20.04, IP: 192.168.1.136), where we use camera ROS driver to obtain images and depth estimates from the camera. In order to have the various ROS commands available from command line, we source the **setup.bash** of our ROS installation. This file is stored at /opt/ros/**ros-distro**/setup.bash where **ros-distro** is replaced by the name of the ROS distribution we are using.
@@ -188,6 +184,10 @@ SPOT algorithm running on our infrastructure.
 
 <p align="center">
   <img src="./readme_files/robot_2.gif" width="320" height="180" alt="Docker image OS" />
+</p>
+
+<p align="center">
+  <img src="./readme_files/robot_1.jpg" width="445" height="325" alt="Docker image OS" />
 </p>
 
 ## Acknowledgments
