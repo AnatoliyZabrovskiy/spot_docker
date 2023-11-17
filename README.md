@@ -183,7 +183,7 @@ sudo pkill -9 -f main.py
 SPOT algorithm running on our infrastructure.
 
 <p align="center">
-  <img src="./readme_files/robot_2.gif" width="320" height="180" alt="Docker image OS" />
+  <img src="./readme_files/robot_2.gif" width="445" height="250" alt="Docker image OS" />
 </p>
 
 <p align="center">
@@ -192,6 +192,7 @@ SPOT algorithm running on our infrastructure.
 
 ## Acknowledgments
 
+Thanks to [Andrew Hundt](https://github.com/ahundt) for helping us answer our questions regarding the technical aspects of the project. Thanks to everyone who worked on the [Good Robot project](https://github.com/jhu-lcsr/good_robot) and made it publicly available.
 
 
    
