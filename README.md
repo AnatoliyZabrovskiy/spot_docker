@@ -42,7 +42,9 @@ To get a local copy up and running, follow these steps.
 
 4. Connecting to the Docker OS
    
-To connect and see a desktop of an operating system (Ubuntu 18.04) of a Docker container, you can use Google Chrome browser and open the following URL: [http://127.0.0.1:6080/](http://127.0.0.1:6080/). You will be asked to enter **login** and **password**, which are **root** and **goodRobotPassword**, respectively. The default version of SPOT framework is located in the folder _/root/good-robot/good_robot-0.17.1_default_. Our customized version of the SPOT framework is in the folder _/root/good-robot/good_robot-0.17.1_.
+To connect and see a desktop of an operating system (Ubuntu 18.04) of a Docker container, you can use Google Chrome browser and open the following URL: [http://127.0.0.1:6080/](http://127.0.0.1:6080/). You will be asked to enter **login** and **password**, which are **root** and **goodRobotPassword**, respectively. 
+
+The default version of SPOT framework is in the container folder **_/root/good-robot/good_robot-0.17.1_default_** (copied from [here](https://github.com/jhu-lcsr/good_robot/archive/refs/tags/v0.17.1.zip)). Our customized version of the SPOT framework is in the folder **_/root/good-robot/good_robot-0.17.1_** (the same on Github in the archive [`./files/good_robot-0.17.1-rqc.tar`](./files/good_robot-0.17.1-rqc.tar)).
 
 <p align="center">
   <img src="./readme_files/docker_image_os.png" width="402" height="225" alt="Docker image OS" />
@@ -55,7 +57,7 @@ To connect and see a desktop of an operating system (Ubuntu 18.04) of a Docker c
   <img src="./readme_files/robot_1.jpg" width="445" height="325" alt="Docker image OS" />
 </p>
 
-### Lab Server
+### 1. Lab Server
 
 Our ASUS Xtion Pro Live RGB-D camera is connected via USB to the Lab server (Ubuntu 20.04, IP: 192.168.1.136), where we use camera ROS driver to obtain images and depth estimates from the camera. In order to have the various ROS commands available from command line, we source the **setup.bash** of our ROS installation. This file is stored at /opt/ros/**ros-distro**/setup.bash where **ros-distro** is replaced by the name of the ROS distribution we are using.
 
@@ -81,7 +83,7 @@ This step can be skipped: In addition to reducing the frequency of publishing to
   python3 cam_ros_publish.py
    ```
 
-### Cloud Virtual Machine (VM) 
+### 2. Cloud Virtual Machine (VM) 
 
 We connect our Yandex Cloud VM to the Lab network using a VPN (SSTP VPN in our case). We utilize **_sstpc_** VPN client and running the following command on the VM:
 
@@ -118,7 +120,7 @@ To connect and see a desktop of an operating system (Ubuntu 18.04) of a Docker c
 
 Use **login** **root** and **password** **_goodRobotPassword_** to access the container OS.
 
-### Docker container
+### 3. Docker container
 
 After getting access to the Desktop of the Docker Container OS (Ubuntu 18.04), you need to open two terminal windows.
 
