@@ -10,7 +10,7 @@ The Docker image contains a learning algorithm and robot framework called SPOT, 
 We deployed and tested the SPOT framework in our infrastructure using [UR5e robot](https://www.universal-robots.com/products/ur5-robot/) and ASUS Xtion Pro Live RGB-D camera. 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started: Original version of SPOT framework in a Docker container
 
 To get a local copy up and running, follow these steps.
 
