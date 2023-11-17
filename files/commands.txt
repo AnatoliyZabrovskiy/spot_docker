@@ -1,0 +1,36 @@
+Docker container Terminal 1
+
+export ROS_MASTER_URI=http://192.168.1.136:11311
+
+# To check ROS
+source /opt/ros/melodic/setup.bash
+rostopic list
+
+source /home/ros/ros_catkin_ws/install_isolated/setup.bash
+source /home/ubuntu/good-robot/venv/bin/activate
+cd /home/ubuntu/good-robot/good_robot-0.17.1
+
+export CUDA_VISIBLE_DEVICES="0" && python3 main.py \
+--tcp_host_ip 192.168.1.179 \
+--tcp_port 30002 \
+--num_obj 4  \
+--push_rewards \
+--experience_replay \
+--explore_rate_decay \
+--trial_reward \
+--common_sense \
+--check_z_height \
+--place \
+--future_reward_discount 0.65 \
+--is_testing \
+--random_seed 1238 \
+--max_test_trials 10 \
+--save_visualizations \
+--random_actions \
+--snapshot_file ../models/2020-05-13-12-51-39_Sim-Stack-SPOT-Trial-Reward-Masked-Training-simtoreal-model/snapshot.reinforcement_action_efficiency_best_value.pth
+
+-------------------------
+Docker container Terminal 2
+
+sudo pkill -9 -f touch.py
+sudo pkill -9 -f main.py
