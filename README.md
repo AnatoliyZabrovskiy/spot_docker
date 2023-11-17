@@ -44,7 +44,7 @@ To get a local copy up and running, follow these steps.
    
 To connect and see a desktop of an operating system (Ubuntu 18.04) of a Docker container, you can use Google Chrome browser and open the following URL: [http://127.0.0.1:6080/](http://127.0.0.1:6080/). You will be asked to enter **login** and **password**, which are **root** and **goodRobotPassword**, respectively. 
 
-The default version of SPOT framework is in the container folder **_/root/good-robot/good_robot-0.17.1_default_** (copied from [here](https://github.com/jhu-lcsr/good_robot/archive/refs/tags/v0.17.1.zip)). Our customized version of the SPOT framework is in the folder **_/root/good-robot/good_robot-0.17.1_** (the same on Github in the archive [`./files/good_robot-0.17.1-rqc.tar`](./files/good_robot-0.17.1-rqc.tar)).
+The default version of SPOT framework is in the container folder **_/root/good-robot/good_robot-0.17.1_default_** (copied from [here](https://github.com/jhu-lcsr/good_robot/archive/refs/tags/v0.17.1.zip)). Our customized version of the SPOT framework is in the folder **_/root/good-robot/good_robot-0.17.1_** (the same on Github in the archive ./files/good_robot-0.17.1-rqc.tar).
 
 <p align="center">
   <img src="./readme_files/docker_image_os.png" width="402" height="225" alt="Docker image OS" />
