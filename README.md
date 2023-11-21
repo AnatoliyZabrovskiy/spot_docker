@@ -61,7 +61,7 @@ Our ASUS Xtion Pro Live RGB-D camera is connected via USB to the Lab server (Ubu
    source /opt/ros/noetic/setup.bash
    ```
 
-then we export [ROS_MASTER_URI](https://wiki.ros.org/ROS/EnvironmentVariables) environment variable that tells a ROS Node where the ROS Master is. In our case the Lab Server is a ROS Master!
+then we export [ROS_MASTER_URI](https://wiki.ros.org/ROS/EnvironmentVariables) environment variable that tells a ROS Node where the ROS Master is. In our case the Lab Server is the ROS Master!
 
    ```sh
    export ROS_MASTER_URI=http://192.168.1.136:11311
@@ -72,7 +72,7 @@ For the Xtion PRO Live camera we execute the following command:
    roslaunch openni2_launch openni2.launch depth_registration:=true
    ```
 
-This step can be skipped: In addition to reducing the frequency of publishing topics (RGB and Depth), we use the **_cam_ros_publish.py_** script and the following commands:
+The next step can be skipped: In addition to reducing the frequency of publishing topics (RGB and Depth), we use the **_cam_ros_publish.py_** script and the following commands:
    ```sh
   source ./venv/bin/activate
   source /opt/ros/noetic/setup.bash
@@ -86,7 +86,7 @@ We connect our Yandex Cloud VM to the Lab network using a VPN (SSTP VPN in our c
    ```sh
   sudo sstpc --cert-warn --tls-ext --user <USER_NAME> --password <PASSWORD> <VPN_SERVER_ADDRESS> usepeerdns require-mschap-v2 noauth noipdefault noccp refuse-pap refuse-eap refuse-chap refuse-mschap --log-stderr --log-level 4
    ```
-On the VM in the cloud, we have an NVIDIA Tesla V100 card which is used by the algorithm. If you also decide to use a VPN, you will need to set up your own VPN server. Remember to define **USERNAME**, **PASSWORD**, and **VPN_SERVER_ADDRESS** for  **_sstpc_** VPN client. In our case, the VM receive an IP address of **_192.168.0.100_** from the VPN server. Also a new route on the VM instance was added to allow network access from the VM to the robot (IP=192.168.1.179) and the Lab Server (IP=192.168.1.136).
+On the VM in the cloud, we have an NVIDIA Tesla V100 card which is used by the algorithm. If you also decide to use a VPN, you will need to set up your own VPN server. Remember to define **USERNAME**, **PASSWORD**, and **VPN_SERVER_ADDRESS** for  **_sstpc_** VPN client. In our case, the virtual machine receives IP address **_192.168.0.100_** from the VPN server. Also a new route on the VM instance was added to allow network access from the VM to the robot (IP=192.168.1.179) and the Lab Server (IP=192.168.1.136).
 
    ```sh
   sudo ip route add 192.168.1.0/24 via 192.168.1.1
@@ -98,7 +98,7 @@ Now, the VM should have connectivity with the Robot and the Lab Server. Try ping
   ping 192.168.1.136
    ```
 
-Now let's start the Docker container on a VM instance. The Docker image we use is located in our Yandex Container Registry. However, it's also possible to use a local version of the Docker image.
+Now let's start the Docker container on the VM instance. The Docker image we use is located in our Yandex Container Registry. However, it's also possible to use a local version of the Docker image.
 
 For a local Docker image:
 
@@ -116,9 +116,24 @@ To connect and see a desktop of an operating system (Ubuntu 18.04) of a Docker c
 
 Use **login** **root** and **password** **_goodRobotPassword_** to access the container OS.
 
+If your cloud virtual machine does not have a GUI and an internet browser, you can access the Docker container desktop by forwarding port 6080 to your local machine port. 
+
+On Linux:
+  ```
+  $ ssh -L 6080:localhost:6080 -f -N user@ip_address
+  ```
+
+On Windows:
+
+  ```
+ssh -i C:\Users\user\.ssh\id_rsa -L 6080:localhost:6080 -f -N user@ip_address
+  ```
+
+The **user** is a user name, and the **ip_address** is the machine's address with the running Docker container. 
+
 ### 3. Docker container
 
-After getting access to the Desktop of the Docker Container OS (Ubuntu 18.04), you need to open two terminal windows.
+After getting access to the Desktop of the Docker Container OS (Ubuntu 18.04), you need to open two terminal windows and execute the commands presented in the file _/root/ros_catkin_ws/files/commands.txt_.
 
 ### Terminal 1
 Let's first export ROS_MASTER_URI environment variable. The [ROS_MASTER_URI](https://wiki.ros.org/ROS/EnvironmentVariables).
@@ -148,7 +163,7 @@ source /home/ubuntu/good-robot/venv/bin/activate
 cd /home/ubuntu/good-robot/good_robot-0.17.1
  ```
 
-Now we can run the SPOT framework inside a container to test a [model](https://github.com/jhu-lcsr/good_robot/releases) that has already been trained and provided by the author. 
+Now we can run SPOT framework inside a container to test a [model](https://github.com/jhu-lcsr/good_robot/releases) that has already been trained and provided by the author. 
 
 ```sh
 export CUDA_VISIBLE_DEVICES="0" && python3 main.py \
@@ -180,7 +195,7 @@ sudo pkill -9 -f main.py
  ```
 
 ## Results
-SPOT algorithm running on our infrastructure.
+SPOT algorithm running in a Docker container on our infrastructure.
 
 <p align="center">
   <img src="./readme_files/robot_2.gif" width="445" height="250" alt="Docker image OS" />
